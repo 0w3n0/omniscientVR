@@ -9,6 +9,9 @@ TagManager:
   - BasGaucheTrigger
   - HautDroitTrigger
   - BasDroitTrigger
+  - ChampiRouge
+  - Croc
+  - PlumePhoenix
   layers:
   - Default
   - TransparentFX

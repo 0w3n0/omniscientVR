@@ -49,17 +49,33 @@ public class PotionCreation : MonoBehaviour
 
         foreach (string ingredient in ingredients)
         {
-            // Vérifier si l'ingrédient est présent dans les tags du collider
-            // if (Array.IndexOf(colliderTags, ingredient) == -1)
-            // {
-            //     // Si un ingrédient est manquant, retourner false
-            //     return false;
-            // }
+            if (!ContainsIngredient(colliderTags, ingredient))
+        {
+            // If an ingredient is missing, return false
+            return false;
+        }
         }
 
         // Si tous les ingrédients sont présents, retourner true
         return true;
     }
+
+    private bool ContainsIngredient(string[] colliderTags, string ingredient)
+{
+    // Check if the ingredient is present in the tags of the collider
+    foreach (string tag in colliderTags)
+    {
+        if (tag == ingredient)
+        {
+            // If the ingredient is found, return true
+            return true;
+        }
+    }
+
+    // If the ingredient is not found, return false
+    return false;
+}
+
     private void AfficherElementDansChaudron()
     {
         Debug.Log("Élément dans le chaudron : " + elementDansChaudron);
