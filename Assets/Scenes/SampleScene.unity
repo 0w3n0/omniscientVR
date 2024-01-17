@@ -885,7 +885,7 @@ GameObject:
   - component: {fileID: 490773466}
   - component: {fileID: 490773465}
   m_Layer: 0
-  m_Name: ChampiRouge
+  m_Name: ChampiRouge1
   m_TagString: ChampiRouge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3986,6 +3986,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2712476d2ee71b4cb51536fe9599f10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nomsGameObjects:
+  - 
+  - 
+  - 
+  - 
+  - 
   Potion1: 1
   Potion2: 0
   Potion3: 0
