@@ -12,6 +12,11 @@ TagManager:
   - ChampiRouge
   - Croc
   - PlumePhoenix
+  - Crystal
+  - ChampiBleu
+  - Oeil
+  - PlumeColombe
+  - CaillouRond
   layers:
   - Default
   - TransparentFX

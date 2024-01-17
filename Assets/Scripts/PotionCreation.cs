@@ -7,8 +7,11 @@ public class PotionCreation : MonoBehaviour
     // Tableaux d'ingrédients pour chaque potion
     private string[] potion1Ingredients = { "ChampiRouge", "Croc", "PlumePhoenix" };
     private string[] potion2Ingredients = { "PlumeColombe", "CaillouRond" };
-    private string[] potion3Ingredients = { "ChampiBleu", "OngleSorciere" };
+    private string[] potion3Ingredients = { "ChampiBleu", "Oeil" };
     private string[] potion4Ingredients = { "ChampiRouge", "Croc", "PlumePhoenix", "Crystal" };
+
+    private List<GameObject> objetsEnCollision = new List<GameObject>();
+    public string[] nomsGameObjects = new string[5];
 
     private string AllIngredientsPot1 = "";
     private string AllIngredientsPot2 = "";
@@ -20,15 +23,17 @@ public class PotionCreation : MonoBehaviour
     public bool Potion3 = false;
     public bool Potion4 = false;
 
-    private int NbPotion1 = 0;
-    private int NbPotion2 = 0;
-    private int NbPotion3 = 0;
-    private int NbPotion4 = 0;
+    public bool PotionDone1 = false;
+    public bool PotionDone2 = false;
+    public bool PotionDone3 = false;
+    public bool PotionDone4 = false;
 
-    public GameObject Model_potion1;
-    public GameObject Model_potion2;
-    public GameObject Model_potion3;
-    public GameObject Model_potion4;
+    public int cpt = 0;
+
+    public int NbPotion1 = 0;
+    public int NbPotion2 = 0;
+    public int NbPotion3 = 0;
+    public int NbPotion4 = 0;
 
     public GameObject Trigger1;
     public GameObject Trigger2;
@@ -98,7 +103,7 @@ public class PotionCreation : MonoBehaviour
     }
     void Update()
     {
-
+        AfficherObjetsEnCollision();
         if (Potion1 == true)
         {
             Debug.Log("La potion a conconcter est composée de " + AllIngredientsPot1);
@@ -134,6 +139,7 @@ public class PotionCreation : MonoBehaviour
             {
                 Debug.Log(other.gameObject.tag + " est dans le chaudron !");
                 NbPotion1 += 1;
+                cpt += 1;
                 Debug.Log(NbPotion1);
             }
 
@@ -141,6 +147,7 @@ public class PotionCreation : MonoBehaviour
             {
                 Debug.Log(other.gameObject.tag + " est dans le chaudron !");
                 NbPotion1 += 1;
+                cpt += 1;
                 Debug.Log(NbPotion1);
             }
 
@@ -148,12 +155,22 @@ public class PotionCreation : MonoBehaviour
             {
                 Debug.Log(other.gameObject.tag + " est dans le chaudron !");
                 NbPotion1 += 1;
+                cpt += 1;
                 Debug.Log(NbPotion1);
             }
 
-            if (NbPotion1 == 3)
+            else
             {
-                Debug.Log("Potion1 créée !");
+                cpt += 1;
+                Debug.Log("ON RESET TOUT");
+            }
+
+            if (cpt == 3)
+            {
+                Trigger1.SetActive(true);
+                Trigger2.SetActive(true);
+                Trigger3.SetActive(true);
+                Trigger4.SetActive(true);
             }
         }
 
@@ -165,6 +182,7 @@ public class PotionCreation : MonoBehaviour
             {
                 Debug.Log(other.gameObject.tag + " est dans le chaudron !");
                 NbPotion2 += 1;
+                cpt += 1;
                 Debug.Log(NbPotion2);
             }
 
@@ -172,12 +190,23 @@ public class PotionCreation : MonoBehaviour
             {
                 Debug.Log(other.gameObject.tag + " est dans le chaudron !");
                 NbPotion2 += 1;
+                cpt += 1;
                 Debug.Log(NbPotion2);
             }
 
-            if (NbPotion2 == 2)
+            else
             {
-                Debug.Log("Potion2 créée !");
+                cpt += 1;
+                Debug.Log("ON RESET TOUT");
+            }
+
+            if (cpt == 2)
+            {
+                Trigger1.SetActive(true);
+                Trigger2.SetActive(true);
+                Trigger3.SetActive(true);
+                Trigger4.SetActive(true);
+
             }
         }
 
@@ -189,19 +218,32 @@ public class PotionCreation : MonoBehaviour
             {
                 Debug.Log(other.gameObject.tag + " est dans le chaudron !");
                 NbPotion3 += 1;
+                cpt += 1;
                 Debug.Log(NbPotion3);
             }
 
-            else if (other.gameObject.tag == "OngleSorciere")
+            else if (other.gameObject.tag == "Oeil")
             {
                 Debug.Log(other.gameObject.tag + " est dans le chaudron !");
                 NbPotion3 += 1;
+                cpt += 1;
                 Debug.Log(NbPotion3);
             }
 
-            if (NbPotion3 == 2)
+            else
             {
-                Debug.Log("Potion3 créée !");
+                cpt += 1;
+                Debug.Log("ON RESET TOUT");
+                AjouterNom(other.gameObject.name);
+            }
+
+            if (cpt == 2)
+            {
+                Trigger1.SetActive(true);
+                Trigger2.SetActive(true);
+                Trigger3.SetActive(true);
+                Trigger4.SetActive(true);
+
             }
         }
 
@@ -213,6 +255,7 @@ public class PotionCreation : MonoBehaviour
             {
                 Debug.Log(other.gameObject.tag + " est dans le chaudron !");
                 NbPotion4 += 1;
+                cpt += 1;
                 Debug.Log(NbPotion4);
             }
 
@@ -220,6 +263,7 @@ public class PotionCreation : MonoBehaviour
             {
                 Debug.Log(other.gameObject.tag + " est dans le chaudron !");
                 NbPotion4 += 1;
+                cpt += 1;
                 Debug.Log(NbPotion4);
             }
 
@@ -227,6 +271,7 @@ public class PotionCreation : MonoBehaviour
             {
                 Debug.Log(other.gameObject.tag + " est dans le chaudron !");
                 NbPotion4 += 1;
+                cpt += 1;
                 Debug.Log(NbPotion4);
             }
 
@@ -234,12 +279,23 @@ public class PotionCreation : MonoBehaviour
             {
                 Debug.Log(other.gameObject.tag + " est dans le chaudron !");
                 NbPotion4 += 1;
+                cpt += 1;
                 Debug.Log(NbPotion4);
             }
 
-            if (NbPotion4 == 4)
+            else
             {
-                Debug.Log("Potion4 créée !");
+                cpt += 1;
+                Debug.Log("ON RESET TOUT");
+            }
+
+            if (cpt == 4)
+            {
+                Trigger1.SetActive(true);
+                Trigger2.SetActive(true);
+                Trigger3.SetActive(true);
+                Trigger4.SetActive(true);
+
             }
         }
     }
@@ -260,6 +316,19 @@ public class PotionCreation : MonoBehaviour
 
         // Si tous les ingrédients sont présents, retourner true
         return true;
+    }
+
+    void AjouterNom(string nom)
+    {
+        // Cherchez un emplacement vide dans le tableau pour ajouter le nom
+        for (int i = 0; i < nomsGameObjects.Length; i++)
+        {
+            if (string.IsNullOrEmpty(nomsGameObjects[i]))
+            {
+                nomsGameObjects[i] = nom;
+                break; // Sortez de la boucle une fois que le nom a été ajouté
+            }
+        }
     }
 
     private bool ContainsIngredient(string[] colliderTags, string ingredient)
@@ -299,6 +368,32 @@ public class PotionCreation : MonoBehaviour
     public void LetsMakePotion4()
     {
         Potion4 = true;
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+            Debug.Log(collision.gameObject.name);
+            // Récupérer le GameObject de l'autre collider
+            GameObject autreObjet = collision.gameObject;
+
+            // Ajouter l'objet à la liste s'il n'est pas déjà présent
+            if (!objetsEnCollision.Contains(autreObjet))
+            {
+                objetsEnCollision.Add(autreObjet);
+            }
+       
+    }
+
+    private void AfficherObjetsEnCollision()
+    {
+        // Afficher les noms des objets en collision
+
+        Debug.Log("Objets en collision :");
+        foreach (GameObject objet in objetsEnCollision)
+        {
+            Debug.Log(objet.name);
+        }
+
     }
 }
 
